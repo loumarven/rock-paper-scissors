@@ -110,6 +110,8 @@ weapons.forEach((weapon) => {
       return;
     }
 
+    weapon.classList.add("chosen-weapon");
+
     let playerWeapon = e.target.dataset.weapon;
     let computerWeapon = computerPlay();
 
@@ -138,6 +140,10 @@ weapons.forEach((weapon) => {
       togglePlayAgain("visible");
       isGameOver = false;
     }
+  });
+
+  weapon.addEventListener("transitionend", (e) => {
+    weapon.classList.remove("chosen-weapon");
   });
 });
 
