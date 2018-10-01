@@ -1,0 +1,88 @@
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', helvetica, arial, sans;
+  font-size: 80px;
+  margin: 0 auto;
+  text-align: center;
+  width: 40%;
+}
+
+.container > div {
+  margin-top: 30px;
+}
+
+.round-weapons {
+  display: flex;
+  flex-direction: row;
+}
+
+.round-weapon {
+  flex: 0 0 50%;
+}
+
+.board {
+  flex: 0 0 50%;
+}
+
+.board > span:first-child,
+.container > span {
+  font-size: 1rem;
+}
+
+.play-again {
+  visibility: hidden;
+  font-size: 1rem;
+}
+
+.play-again button {
+  appearance: none;
+  background-color: #2980b9;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  padding: 8px;
+}
+
+.play-again button:hover {
+  background-color: #3498db;
+  cursor: pointer;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+}
+
+.weapons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.weapons > div {
+  flex: 0 0 30%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.weapon:hover {
+  cursor: pointer;
+}
+
+.winner {
+  color: #e67e22;
+}
+
+.winnerboard {
+  background-color: #2c3e50;
+  color: white;
+  display: inline-block;
+  font-size: 50px;
+  margin: 0 auto;
+  width: auto;
+}
