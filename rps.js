@@ -24,11 +24,12 @@ function displayScores(player, computer) {
   computerDiv.textContent = computer;
 }
 
-function displayWinner(winner) {
-  let winnerDiv = document.querySelector("#winnerboard");
-  let win = (winner === "You") ? "win!" : "wins!";
-  winnerDiv.textContent = winner.concat(" ", win);
-  winnerDiv.style.padding = "10px";
+function displayResult(result) {
+  let resultDiv = document.querySelector("#game-result");
+
+  resultDiv.textContent = "You " + result + "!";
+  resultDiv.style.background = (result === "win") ? "#2c3e50" : "#c0392b";  
+  resultDiv.style.padding = "10px";
 
   let scoreDivs = document.querySelectorAll(".score");
   scoreDivs.forEach(score => {
@@ -103,7 +104,7 @@ let weapons = document.querySelectorAll(".weapon");
 weapons.forEach((weapon) => {
   weapon.addEventListener("click", (e) => {
     let roundResult;
-    let winner;
+    let gameResult;
 
     if (playerScore === pointsToWin ||
         computerScore === pointsToWin) {
@@ -121,13 +122,13 @@ weapons.forEach((weapon) => {
     if (roundResult === "win") {
       playerScore++;
       if (playerScore === pointsToWin) {
-        winner = "You";
+        gameResult = "win";
         isGameOver = true;
       }
     } else if (roundResult === "lose") {
       computerScore++;
       if (computerScore === pointsToWin) {
-        winner = "Computer";
+        gameResult = "lose";
         isGameOver = true;
       }
     }
@@ -135,7 +136,7 @@ weapons.forEach((weapon) => {
     displayScores(playerScore, computerScore);
 
     if (isGameOver) {
-      displayWinner(winner);
+      displayResult(gameResult);
       disableWeaponClick();
       togglePlayAgain("visible");
       isGameOver = false;
@@ -154,7 +155,7 @@ button.addEventListener("click", (e) => {
   let winnerScoreDiv = document.querySelector(".winner");
   let playerWeaponDiv = document.querySelector("#player-weapon");
   let computerWeaponDiv = document.querySelector("#computer-weapon");
-  let winnerDiv = document.querySelector("#winnerboard");
+  let resultDiv = document.querySelector("#game-result");
 
   weapons.forEach(weapon => {
     weapon.style.color = "black";
@@ -170,8 +171,8 @@ button.addEventListener("click", (e) => {
   playerWeaponDiv.innerHTML = "";
   computerWeaponDiv.innerHTML = "";
 
-  winnerDiv.textContent = "";
-  winnerDiv.style.padding = "0px";
+  resultDiv.textContent = "";
+  resultDiv.style.padding = "0px";
 
   togglePlayAgain("hidden");
 });
